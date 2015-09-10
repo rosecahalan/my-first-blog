@@ -1,15 +1,48 @@
+{% load staticfiles %}
 <html>
     <head>
-        <title>Totoro's Blog</title>
+     <title>Totoro's Blog</title>
+
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+
+<link href="http://fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+body { 
+    padding-left: 15px;
+}
+
+<link rel="stylesheet" href="{% static "css/blog.css" %}">
     </head>
     <body>
         <div>
+
+<div class="page-header">
+    <h1><a href="/">Django Girls Blog</a></h1>
+</div>
             <h1><a href="">Totoro's blog</a></h1>
        {{ posts }}
             <p>published: 14.06.2014, 12:14</p>
             <h2><a href="">My first post</a></h2>
             <p>Acorns are so delicious! nom nom nom nom I am a Totoro.</p>
         </div>
+
+<div class="content container">
+    <div class="row">
+        <div class="col-md-8">
+            {% for post in posts %}
+                <div class="post">
+                    <div class="date">
+                        {{ post.published_date }}
+                    </div>
+                    <h1><a href="">{{ post.title }}</a></h1>
+                    <p>{{ post.text|linebreaks }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
 
         <div>
             <p>published: 14.06.2014, 12:14</p>
